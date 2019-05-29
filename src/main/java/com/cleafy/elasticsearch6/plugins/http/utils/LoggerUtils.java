@@ -38,4 +38,11 @@ public class LoggerUtils {
     private static InetAddress getAddress(RestRequest request) {
         return ((InetSocketAddress) request.getRemoteAddress()).getAddress();
     }
+    
+    public static void log (String msg) {
+    	 Logger log = LogManager.getLogger(LoggerUtils.class);
+    	 log.error(msg);
+    	 log.error(msg);
+    	 log.error(msg);
+    }
 }

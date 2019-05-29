@@ -66,7 +66,8 @@ public class HttpBasicServerPlugin extends Plugin implements ActionPlugin {
         settings.add(Setting.simpleString(Globals.SETTINGS_USERNAME, Setting.Property.NodeScope, Setting.Property.Filtered));
         settings.add(Setting.simpleString(Globals.SETTINGS_PASSWORD, Setting.Property.NodeScope, Setting.Property.Filtered));
         settings.add(Setting.boolSetting(Globals.SETTINGS_LOG, false, Setting.Property.NodeScope, Setting.Property.Filtered));
-
+        settings.add(Setting.simpleString(Globals.SETTINGS_IPWHITELIST, Setting.Property.NodeScope, Setting.Property.Filtered));
+        
         return settings;
     }
 }
