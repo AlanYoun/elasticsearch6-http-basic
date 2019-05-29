@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.Set; 
 
 import org.apache.commons.logging.LogFactory;
 import org.elasticsearch.ElasticsearchException;

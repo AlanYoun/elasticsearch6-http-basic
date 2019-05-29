@@ -1,6 +1,5 @@
 package com.cleafy.elasticsearch6.plugins.http;
 
-import com.cleafy.elasticsearch6.plugins.http.utils.Globals;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Setting;
 import org.elasticsearch.common.settings.Settings;
@@ -8,6 +7,8 @@ import org.elasticsearch.common.util.concurrent.ThreadContext;
 import org.elasticsearch.plugins.ActionPlugin;
 import org.elasticsearch.plugins.Plugin;
 import org.elasticsearch.rest.RestHandler;
+
+import com.cleafy.elasticsearch6.plugins.http.utils.Globals;
 
 import java.util.ArrayList;
 import java.util.List;
