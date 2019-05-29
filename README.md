@@ -44,7 +44,7 @@ see [this article](https://en.wikipedia.org/wiki/Basic_access_authentication)
 
 ## Configuration example
 
-The following code enables plugin logging, sets user and password.
+The following code enables plugin logging, sets user and password.提醒：属性的:后面需要加一个空格！！！
 
 ```
 http.basic.enable: true
