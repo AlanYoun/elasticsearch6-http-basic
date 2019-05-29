@@ -55,7 +55,7 @@ public class BasicRestFilter {
         			return true;
         		}
         	}
-        	//用户名密码鉴权
+        	//user and pwd 
             if (this.httpBasicAuthenticator.authenticate(request)) {
                 LoggerUtils.logRequest(request, getClass());
                 return true;
