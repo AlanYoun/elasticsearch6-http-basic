@@ -49,6 +49,7 @@ http.basic.enable: true
 http.basic.log: true
 http.basic.user: "some_user"
 http.basic.password: "some_password"
+http.basic.ipwhitelist: ip1,ip2,ip3
 ```
 
 ## Testing
