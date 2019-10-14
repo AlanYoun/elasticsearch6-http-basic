@@ -30,7 +30,7 @@ Once the plugin is installed it can be configured in the [elasticsearch modules 
 |     Setting key                   |  Default value               | Notes                                                                   |
 |-----------------------------------|------------------------------|-------------------------------------------------------------------------|
 | `http.basic.enabled`              | true                         | **true** disables the default ES HTTP Transport module                  |
-| `http.basic.user`                 | "admin"                      |                                                                         |
+| `http.basic.username`             | "admin"                      |                                                                         |
 | `http.basic.password`             | "admin_pw"                   |                                   
 | `http.basic.log`                  | false                        | enables plugin logging to ES log. Unauthenticated requests are 
 | `http.basic.ipwhitelist`          | IP白名单                      | 在此列表中的ip，可以不输入带入用户名密码即可访问es服务，用英文逗号,分割
