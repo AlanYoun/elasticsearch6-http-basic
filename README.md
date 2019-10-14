@@ -49,7 +49,7 @@ The following code enables plugin logging, sets user and password.提醒：属�
 ```
 http.basic.enable: true
 http.basic.log: true
-http.basic.user: "some_user"
+http.basic.username: "some_user"
 http.basic.password: "some_password"
 http.basic.ipwhitelist: ip1,ip2,ip3
 ```
