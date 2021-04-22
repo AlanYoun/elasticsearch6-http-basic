@@ -2,6 +2,7 @@ package com.cleafy.elasticsearch6.plugins.http;
 
 import com.cleafy.elasticsearch6.plugins.http.auth.AuthCredentials;
 import com.cleafy.elasticsearch6.plugins.http.auth.HttpBasicAuthenticator;
+import com.cleafy.elasticsearch6.plugins.http.utils.AppProperties;
 import com.cleafy.elasticsearch6.plugins.http.utils.Globals;
 import com.cleafy.elasticsearch6.plugins.http.utils.LoggerUtils;
 
@@ -11,7 +12,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set; 
 
-import org.apache.commons.logging.LogFactory;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.client.node.NodeClient;
 import org.elasticsearch.common.settings.Settings;
@@ -21,20 +21,34 @@ import org.elasticsearch.transport.TransportException;
 public class BasicRestFilter {
     private final HttpBasicAuthenticator httpBasicAuthenticator;
     private boolean isUnauthLogEnabled;
-    private Set<String> ipwhitelist = new HashSet<>();
+    private Set<String> ipwhitelist = new HashSet();
 
     public BasicRestFilter(final Settings settings) {
         super();
+        //设置本机到白名单
+        ipwhitelist.add("localhost");
+        ipwhitelist.add("127.0.0.1");
         this.httpBasicAuthenticator = new HttpBasicAuthenticator(settings, 
         		new AuthCredentials(settings.get(Globals.SETTINGS_USERNAME), settings.get(Globals.SETTINGS_PASSWORD).getBytes()));
         this.isUnauthLogEnabled = settings.getAsBoolean(Globals.SETTINGS_LOG, false);
         String ipwhitelistStr = settings.get( Globals.SETTINGS_IPWHITELIST);
-        if ( ipwhitelistStr != null && !"".equals( ipwhitelistStr) ) {
-        	String[] ips = ipwhitelistStr.split(",");
-        	for (String ip : ips) {
-        		ipwhitelist.add(ip.trim());
-        	}
-        }
+        handleIpWhiteList(ipwhitelistStr);
+        //处理配置文件中的白名单
+        ipwhitelistStr = AppProperties.getProperty(Globals.SETTINGS_IPWHITELIST);
+        handleIpWhiteList(ipwhitelistStr);
+     }
+
+    /**
+     * 处理白名单字符串
+     * @param ipwhitelistStr 白名单字符串
+     */
+    private void handleIpWhiteList(String ipwhitelistStr){
+         if ( ipwhitelistStr != null && !"".equals( ipwhitelistStr) ) {
+             String[] ips = ipwhitelistStr.split(",");
+             for (String ip : ips) {
+                 ipwhitelist.add(ip.trim());
+             }
+         }
      }
 
     public RestHandler wrap(RestHandler original) {
