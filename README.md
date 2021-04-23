@@ -20,7 +20,7 @@ There is no way to configure this on a per index basis.
 
 ## Installation
 
-Download the desired version from https://github.com/Cleafy/elasticsearch6-http-basic/releases and copy it to `plugins/http-basic`.
+Download the desired version from https://github.com/AlanYoun/elasticsearch6-http-basic/releases
 
 ## Configuration
 
@@ -51,7 +51,7 @@ http.basic.password: some_password
 http.basic.ipwhitelist: ip1,ip2,ip3
 ```
 
-如果elasticsearch没有http.basic.ipwhitelist参数就通过`resource/application.properties`文件配置，具体如下
+如果elasticsearch没有http.basic.ipwhitelist参数（启动会报错）就通过`resource/application.properties`文件配置，具体如下
 
 ```
 http.basic.ipwhitelist=192.168.30.169,192.168.30.188
@@ -72,9 +72,3 @@ Wrong credentials
 $ curl -v --user my_username:wrong_password no_local_host:9200/    # health check, returns 200 with  "{\"OK\":{}}" although Unauthorized
 $ curl -v --user my_username:password no_local_host:9200/foo       # returns 401
 ```
-
-
-## Issues
-
-Please file your issue here: 
-https://github.com/Cleafy/elasticsearch6-http-basic/issues
